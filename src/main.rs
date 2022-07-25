@@ -73,6 +73,11 @@ fn main() {
         )
         .get_matches();
 
+    match matches.try_get_one::<String>("check") {
+        Ok(Some(f)) => println!(" check os system {:?}", f),
+        _ => {}
+    }
+
     match matches.subcommand() {
         Some(("sync", sync_matches)) => {
             if sync_matches.contains_id("search") {
