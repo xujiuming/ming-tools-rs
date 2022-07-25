@@ -15,9 +15,5 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
-    match args {
-        name => println!("{}", name),
-        count => println!("{}", count),
-        _ => println!("none!")
-    }
+    println!("{:?}", args)
 }
