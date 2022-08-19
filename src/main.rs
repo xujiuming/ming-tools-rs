@@ -7,10 +7,6 @@ fn main() {
         .subcommand_required(true)
         .arg_required_else_help(true)
         .author("Pacman Development Team")
-        .arg(Arg::new("check")
-            .short('c')
-            .long("check")
-        )
         // Query subcommand
         //
         // Only a few of its arguments are implemented below.
@@ -25,8 +21,7 @@ fn main() {
                         .long("search")
                         .help("search locally installed packages for matching strings")
                         .conflicts_with("info")
-                        .takes_value(true)
-                        .multiple_values(true),
+                        .action(ArgAction::Set)
                 )
                 .arg(
                     Arg::new("info")
@@ -34,8 +29,7 @@ fn main() {
                         .short('i')
                         .conflicts_with("search")
                         .help("view package information")
-                        .takes_value(true)
-                        .multiple_values(true),
+                        .action(ArgAction::Set)
                 ),
         )
         // Sync subcommand
@@ -51,8 +45,7 @@ fn main() {
                         .short('s')
                         .long("search")
                         .conflicts_with("info")
-                        .takes_value(true)
-                        .multiple_values(true)
+                        .action(ArgAction::Set)
                         .help("search remote repositories for matching strings"),
                 )
                 .arg(
@@ -67,16 +60,10 @@ fn main() {
                     Arg::new("package")
                         .help("packages")
                         .required_unless_present("search")
-                        .takes_value(true)
-                        .multiple_values(true),
+                        .action(ArgAction::Set)
                 ),
         )
         .get_matches();
-
-    match matches.try_get_one::<String>("check") {
-        Ok(Some(f)) => println!(" check os system {:?}", f),
-        _ => {}
-    }
 
     match matches.subcommand() {
         Some(("sync", sync_matches)) => {
