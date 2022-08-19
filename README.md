@@ -17,8 +17,12 @@ ldd target/x86_64-unknown-linux-musl/release/ming-api
 # 登录crate.io 
 cargo login  [secret]
 #  打包一个 crate 包
+cargo package --list
 cargo package  
 cargo package --allow-dirty 
 # 上传 
-cargo publish
+cargo publish --allow-dirty 
+cargo publish --dry-run --allow-dirty 
 ```
+
+error: 5 files in the working directory contain changes that were not yet committed into git:
