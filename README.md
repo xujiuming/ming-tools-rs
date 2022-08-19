@@ -14,4 +14,11 @@ rustup target add x86_64-unknown-linux-musl
 cargo build --release --target=x86_64-unknown-linux-musl
 # 查看静态链接   
 ldd target/x86_64-unknown-linux-musl/release/ming-api
+# 登录crate.io 
+cargo login  [secret]
+#  打包一个 crate 包
+cargo package  
+cargo package --allow-dirty 
+# 上传 
+cargo publish
 ```
