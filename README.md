@@ -24,5 +24,3 @@ cargo package --allow-dirty
 cargo publish --allow-dirty 
 cargo publish --dry-run --allow-dirty 
 ```
-
-error: 5 files in the working directory contain changes that were not yet committed into git:
